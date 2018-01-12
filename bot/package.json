@@ -8,6 +8,7 @@
     "start": "bin/hubot"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "hubot": "^2.18.0",
     "hubot-diagnostics": "0.0.1",
     "hubot-giphy": "^0.6.1",
