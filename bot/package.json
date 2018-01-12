@@ -1,13 +1,10 @@
 {
-  "name": "NextBot",
-  "version": "0.0.0",
+  "name": "chubot",
+  "version": "1000.0.0",
   "private": true,
-  "author": "RPLAN Next Team",
+  "author": "spencer",
   "description": "A simple helpful robot for your Company",
   "scripts": {
-    "test": "mocha **/*.ut.js",
-    "test:watch": "mocha **/*.ut.js --watch",
-    "lint": "eslint scripts",
     "start": "bin/hubot"
   },
   "dependencies": {
