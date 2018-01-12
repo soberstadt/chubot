@@ -1,7 +1,6 @@
-FROM node:6.2.0
+FROM node:6-slim
 
 RUN mkdir /opt/bot \
-    && useradd -ms /bin/bash node \
     && chown -R node /opt/bot
 
 ENV HUBOT_VERSION 2.18.0
