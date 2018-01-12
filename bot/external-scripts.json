@@ -5,6 +5,8 @@
   "hubot-pugme",
   "hubot-maps",
   "hubot-redis-brain",
-  "hubot-giphy"
+  "hubot-giphy",
+  "hubot-shy",
+  "hubot-standup-alarm"
 ]
 
