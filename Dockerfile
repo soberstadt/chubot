@@ -16,6 +16,6 @@ WORKDIR /opt/bot
 
 ADD bot /opt/bot
 
-RUN npm install
+RUN npm install --production
 
-CMD ["./bin/hubot", "--adapter", "slack"]
+CMD ["./bin/hubot", "--adapter", "hipchat"]
