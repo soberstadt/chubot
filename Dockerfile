@@ -1,11 +1,11 @@
-FROM node:6-slim
+FROM resin/raspberry-pi-alpine-node:6-slim
 
-RUN mkdir /opt/bot \
-    && chown -R node /opt/bot
+RUN mkdir /opt/bot
+#    && chown -R node /opt/bot
 
-ENV HUBOT_VERSION 2.18.0
+#ENV HUBOT_VERSION 2.18.0
 
-USER node
+#USER node
 WORKDIR /opt/bot
 
 ADD bot /opt/bot
