@@ -1,4 +1,4 @@
-FROM resin/raspberry-pi-alpine-node:10-slim
+FROM balenalib/raspberry-pi-alpine-node:10
 
 RUN mkdir /opt/bot
 WORKDIR /opt/bot
