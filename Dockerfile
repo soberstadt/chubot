@@ -14,3 +14,5 @@ ADD bot /opt/bot
 ADD redis.conf /opt/bot/redis.conf
 
 CMD redis-server redis.conf && ./bin/hubot
+
+EXPOSE 8080
