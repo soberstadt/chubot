@@ -3,6 +3,7 @@
 #
 # Commands:
 #   merge test subscribe CruGlobal\repo_name - subscribes the current room to receive notifications about the defined repo
+#   merge test unsubscribe CruGlobal\repo_name - unsubscribes the current room from notifications about the defined repo
 #   merge test list all - lists all repo subscriptions for all rooms
 #
 # Author:
@@ -22,12 +23,24 @@ module.exports = (robot) ->
 
   saveSubscription = (room, repo, res) ->
     subs = getSubscriptions()
+    if _.find(subs, { room: room, repo: repo })
+      res.send "This room is already subscribed to #{repo}"
+      return
+
     newSub =
       room: room
       repo: repo
     subs.push newSub
     updateBrain subs
     res.send "Ok, I'll alert this room of errors to merge on #{repo}"
+
+  removeSubscription = (room, repo, res) ->
+    subs = getSubscriptions()
+    newSub =
+      room: room
+      repo: repo
+    updateBrain _.reject(subs, newSub)
+    res.send "Cool, no more alerts for errors to merge on #{repo}"
   
   # Finds the room for most adaptors
   findRoom = (res) ->
@@ -49,6 +62,9 @@ module.exports = (robot) ->
 
   robot.respond /merge test subscribe (CruGlobal\/[\w-]+)/i, (res) ->
     saveSubscription(findRoom(res), res.match[1], res)
+
+  robot.respond /merge test unsubscribe (CruGlobal\/[\w-]+)/i, (res) ->
+    removeSubscription(findRoom(res), res.match[1], res)
 
   robot.respond /merge test list all/i, (res) ->
     listAllSubscriptions(res)
