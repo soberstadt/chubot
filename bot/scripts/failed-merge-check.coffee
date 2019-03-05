@@ -27,7 +27,7 @@ module.exports = (robot) ->
       repo: repo
     subs.push newSub
     updateBrain subs
-    res.send 'Ok, I\'ll alert this room of errors to merge on ' + repo
+    res.send "Ok, I'll alert this room of errors to merge on #{repo}"
   
   # Finds the room for most adaptors
   findRoom = (res) ->
@@ -41,8 +41,8 @@ module.exports = (robot) ->
     if subs.length == 0
       res.send 'No merge status subscriptions yet :('
     else
-      subsText = ['Here\'s the merge status subscriptions for every room:'].concat(_.map(subs, (sub) ->
-        'Room: ' + sub.room + ', Repo: ' + sub.repo
+      subsText = ["Here's the merge status subscriptions for every room:"].concat(_.map(subs, (sub) ->
+        "Room: #{sub.room}, Repo: #{sub.repo}"
       ))
       res.send subsText.join('\n')
     return
@@ -58,8 +58,10 @@ module.exports = (robot) ->
     repo   = data.repo
     author = data.author
 
-    message = "Failed to merge master into staging on " + repo + 
-                ". Fix it soon before another developer ties to merge their branch into staging!"
+    console.log("Request notifying failure of #{repo} by #{author}")
+
+    message = "Failed to merge master into staging on #{repo}. " + 
+                "Fix it soon before another developer ties to merge their branch into staging!"
 
     for sub in getSubscriptionsForRepo(repo)
       robot.messageRoom(sub.room, message)
