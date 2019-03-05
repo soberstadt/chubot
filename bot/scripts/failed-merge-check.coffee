@@ -77,7 +77,7 @@ module.exports = (robot) ->
     console.log("Request notifying failure of #{repo} by #{author}")
 
     message = "Failed to merge master into staging on #{repo}. " + 
-                "Fix it soon before another developer ties to merge their branch into staging!"
+                "Fix it soon before another developer tries to merge their branch into staging!"
 
     for sub in getSubscriptionsForRepo(repo)
       robot.messageRoom(sub.room, message)
